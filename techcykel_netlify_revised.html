@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechCykel | Mobile Data Destruction & E-Waste Pickup NYC</title>
+
+  <meta name="description" content="TechCykel provides mobile data destruction, secure document destruction, IT asset disposal, and free electronics pickup services throughout NYC and surrounding areas." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0c1117;
+      --panel:#121923;
+      --panel-2:#172130;
+      --text:#ffffff;
+      --muted:#b8c1cc;
+      --muted-2:#8fa0b3;
+      --green:#35d06d;
+      --green-soft:rgba(53,208,109,.13);
+      --blue:#2f8cff;
+      --blue-2:#00b7ff;
+      --blue-soft:rgba(47,140,255,.16);
+      --line:rgba(255,255,255,.09);
+      --shadow:0 24px 65px rgba(0,0,0,.42);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit;}
+    .container{width:90%;max-width:1280px;margin:auto;}
+    .blue{color:var(--blue-2);} .green{color:var(--green);}
+
+    /* NAV */
+    nav{
+      width:100%;position:fixed;top:0;z-index:999;
+      backdrop-filter:blur(14px);
+      background:rgba(7,12,18,.82);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:17px 0;}
+    .logo{font-size:1.55rem;font-weight:900;letter-spacing:-1px;}
+    .logo span{color:var(--blue-2);}
+    .nav-links{display:flex;gap:26px;align-items:center;}
+    .nav-links a{font-size:.93rem;color:#d7dee8;transition:.25s;}
+    .nav-links a:hover{color:var(--blue-2);}
+    .nav-btn{background:linear-gradient(135deg,var(--blue),var(--green));color:#051018!important;padding:12px 20px;border-radius:12px;font-weight:800;}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 75% 25%, rgba(47,140,255,.22), transparent 34%),
+        radial-gradient(circle at 15% 80%, rgba(53,208,109,.12), transparent 34%),
+        linear-gradient(to right, rgba(12,17,23,.98), rgba(12,17,23,.86), rgba(12,17,23,.55)),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1800&auto=format&fit=crop');
+      background-size:cover;background-position:center;
+    }
+
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:58px;align-items:center;padding-top:130px;padding-bottom:80px;}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;background:rgba(47,140,255,.14);color:#a9d7ff;border:1px solid rgba(47,140,255,.34);padding:9px 16px;border-radius:999px;font-size:.84rem;font-weight:700;margin-bottom:24px;}
+    .hero h1{font-size:4.35rem;line-height:1.03;margin-bottom:24px;font-weight:900;letter-spacing:-2.4px;}
+    .hero h1 span{background:linear-gradient(90deg,var(--blue-2),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .hero p{color:#d3dce6;font-size:1.13rem;max-width:720px;margin-bottom:32px;}
+    .hero-buttons{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:28px;}
+    .primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 25px;border-radius:14px;font-weight:800;transition:.25s;}
+    .primary-btn{background:linear-gradient(135deg,var(--blue),var(--green));color:#041018;box-shadow:0 16px 34px rgba(47,140,255,.22);}
+    .primary-btn:hover,.secondary-btn:hover{transform:translateY(-2px);}
+    .secondary-btn{border:1px solid rgba(255,255,255,.17);color:#fff;background:rgba(255,255,255,.03);}
+    .hero-points{display:flex;gap:13px;flex-wrap:wrap;color:#c7d4e3;font-size:.92rem;}
+    .hero-points span{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 12px;}
+
+    /* SECTIONS */
+    .section{padding:96px 0;}
+    .section.dark{background:#0a0f15;}
+    .section-title{text-align:center;margin-bottom:56px;}
+    .section-title h2{font-size:3rem;margin-bottom:14px;letter-spacing:-1.2px;line-height:1.1;}
+    .section-title p{color:var(--muted);max-width:760px;margin:auto;}
+
+    /* FORMS */
+    .form-card{
+      background:linear-gradient(180deg,#162131,#101722);
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:28px;
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+    .form-card h3{font-size:1.65rem;line-height:1.18;margin-bottom:10px;}
+    .form-card p{font-size:.95rem;color:var(--muted);margin-bottom:24px;}
+    .form-group{margin-bottom:15px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    label{display:block;font-size:.83rem;color:#cfe3f7;margin-bottom:7px;font-weight:700;}
+    input,select,textarea{
+      width:100%;background:#0b1118;border:1px solid rgba(255,255,255,.11);color:#fff;padding:14px 15px;border-radius:13px;font-size:.94rem;outline:none;
+    }
+    input:focus,select:focus,textarea:focus{border-color:rgba(47,140,255,.65);box-shadow:0 0 0 3px rgba(47,140,255,.12);}
+    textarea{min-height:116px;resize:vertical;}
+    .submit-btn{width:100%;background:linear-gradient(135deg,var(--blue),var(--green));color:#041018;border:none;padding:16px;border-radius:14px;font-weight:900;cursor:pointer;font-size:1rem;margin-top:6px;}
+    .fine-print{font-size:.83rem!important;color:var(--muted-2)!important;margin-top:14px!important;margin-bottom:0!important;}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .service-card{background:linear-gradient(180deg,var(--panel),#0f1620);border:1px solid rgba(255,255,255,.07);padding:32px;border-radius:24px;transition:.25s;min-height:305px;}
+    .service-card:hover{transform:translateY(-6px);border-color:rgba(47,140,255,.45);}
+    .service-icon{width:66px;height:66px;background:var(--blue-soft);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.55rem;margin-bottom:22px;}
+    .service-card h3{margin-bottom:12px;font-size:1.3rem;line-height:1.25;}
+    .service-card p{color:var(--muted);margin-bottom:22px;font-size:.96rem;}
+    .service-card a{color:#8dccff;font-weight:750;}
+
+    /* DATA DESTRUCTION */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center;}
+    .info-panel{background:linear-gradient(180deg,var(--panel-2),#101722);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:38px;box-shadow:var(--shadow);}
+    .info-panel h2{font-size:2.55rem;line-height:1.1;margin-bottom:18px;letter-spacing:-1px;}
+    .info-panel p{color:#c8d2de;margin-bottom:22px;}
+    .bullets{display:grid;gap:14px;margin:26px 0;}
+    .bullets li{list-style:none;display:flex;gap:12px;color:#d7e2ee;}
+    .check{color:var(--green);font-weight:900;}
+    .process-box{display:grid;gap:18px;}
+    .process-step{padding:22px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.035);}
+    .process-step span{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:11px;background:var(--blue-soft);color:#9bd2ff;font-weight:900;margin-bottom:12px;}
+    .process-step h4{margin-bottom:6px;font-size:1.05rem;}
+    .process-step p{color:var(--muted);font-size:.94rem;}
+    .notice{margin-top:22px;padding:18px 20px;border-radius:18px;background:rgba(53,208,109,.1);border:1px solid rgba(53,208,109,.22);color:#daf7e3;font-size:.95rem;}
+
+    /* ACCEPTED */
+    .accepted-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+    .accepted-card{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:32px;}
+    .accepted-card h3{font-size:1.35rem;margin-bottom:18px;}
+    .accepted-card ul{display:grid;gap:11px;color:#cbd6e2;padding-left:20px;}
+
+    /* TRUST */
+    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+    .trust-box{text-align:center;padding:32px 24px;background:var(--panel);border:1px solid var(--line);border-radius:22px;}
+    .trust-box h4{font-size:1.7rem;color:#8dccff;margin-bottom:8px;}
+    .trust-box p{color:var(--muted);font-size:.94rem;}
+
+    /* DATA FORM AREA */
+    .single-form-wrap{max-width:760px;margin:auto;}
+
+    /* CTA */
+    .cta{text-align:center;padding:96px 0;}
+    .cta-box{background:linear-gradient(135deg,#172436,#101722);border:1px solid rgba(255,255,255,.09);border-radius:32px;padding:66px 40px;box-shadow:var(--shadow);}
+    .cta h2{font-size:2.8rem;line-height:1.1;margin-bottom:16px;letter-spacing:-1px;}
+    .cta p{color:var(--muted);max-width:750px;margin:auto auto 32px;}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--line);padding:52px 0;background:#070b10;}
+    .footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:40px;}
+    footer h4{margin-bottom:16px;} footer p,footer a{color:var(--muted);font-size:.95rem;} footer a{display:block;margin-bottom:10px;}
+    .copyright{margin-top:48px;text-align:center;color:#778496;font-size:.88rem;}
+
+    @media(max-width:1180px){
+      .hero-grid,.split,.accepted-grid,.footer-grid{grid-template-columns:1fr;}
+      .services-grid,.trust-grid{grid-template-columns:repeat(2,1fr);}
+      .hero h1{font-size:3.35rem;}
+    }
+    @media(max-width:760px){
+      .nav-links{display:none;}
+      .hero{min-height:auto;}
+      .hero-grid{padding-top:112px;}
+      .hero h1{font-size:2.52rem;letter-spacing:-1.2px;}
+      .section{padding:70px 0;}
+      .section-title h2,.info-panel h2,.cta h2{font-size:2.05rem;}
+      .services-grid,.trust-grid,.form-row{grid-template-columns:1fr;}
+      .form-card,.info-panel{padding:24px;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#home">Tech<span>Cykel</span></a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#data-destruction">Data Destruction</a>
+        <a href="#free-pickup">Free Pickup</a>
+        <a href="#contact" class="nav-btn">Request Service</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">NYC Mobile Data Destruction • ITAD • E-Waste Pickup</div>
+        <h1>Secure <span>Mobile Data Destruction</span>, IT Asset Disposal & E-Waste Pickup</h1>
+        <p>
+          TechCykel helps homes and businesses securely retire old electronics. We provide mobile data destruction, secure document destruction, IT asset disposal, and free electronics pickup across NYC. Qualifying e-waste pickup is free; clients only pay for data destruction, document destruction, or special service requests.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="primary-btn">Request Pickup →</a>
+          <a href="#data-destruction" class="secondary-btn">View Data Destruction</a>
+        </div>
+        <div class="hero-points">
+          <span>Mobile data destruction</span>
+          <span>Free qualifying e-waste pickup</span>
+          <span>Data security first</span>
+        </div>
+      </div>
+
+      <div class="form-card" id="contact">
+        <h3>Schedule a Pickup</h3>
+        <p>Request e-waste pickup, mobile data destruction, secure document destruction, or IT asset disposal services.</p>
+
+        <form name="general-service-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="general-service-request">
+          <p style="display:none;"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+          <div class="form-group">
+            <input name="full-name" type="text" placeholder="Full Name" required>
+          </div>
+
+          <div class="form-group">
+            <input name="email" type="email" placeholder="Email Address" required>
+          </div>
+
+          <div class="form-group">
+            <input name="phone" type="tel" placeholder="Phone Number" required>
+          </div>
+
+          <div class="form-group">
+            <input name="pickup-address" type="text" placeholder="Pickup / Service Address" required>
+          </div>
+
+          <div class="form-group">
+            <select name="service" required>
+              <option value="">Select Service</option>
+              <option>E-Waste Pickup</option>
+              <option>Mobile Data Destruction</option>
+              <option>Secure Document Destruction</option>
+              <option>IT Asset Disposal (ITAD)</option>
+              <option>Business / Bulk Electronics Pickup</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <textarea name="message" placeholder="Tell us what electronics, drives, documents, or equipment you need handled..."></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit">Submit Request</button>
+          <p class="fine-print">Pickup and service details are confirmed after review.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Professional ITAD & E-Waste Services</h2>
+        <p>TechCykel combines electronics pickup with data-focused handling so clients can recycle responsibly without ignoring the sensitive information inside retired devices.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🔐</div>
+          <h3>Mobile Data Destruction</h3>
+          <p>On-site destruction options for data-bearing devices including hard drives, SSDs, and storage media. Built for businesses, offices, and individuals who need stronger data protection.</p>
+          <a href="#data-destruction">View details →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📄</div>
+          <h3>Secure Document Destruction</h3>
+          <p>Secure handling for confidential paper records, archived files, and sensitive documents that should not enter normal trash or recycling streams.</p>
+          <a href="#data-form">Request service →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">♻️</div>
+          <h3>IT Asset Disposal & Pickup</h3>
+          <p>Free pickup of qualifying electronics and retired IT assets. Devices are routed toward reuse, refurbishment, or responsible recycling after data concerns are addressed.</p>
+          <a href="#contact">Request pickup →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="data-destruction">
+    <div class="container split">
+      <div class="info-panel">
+        <h2>Mobile Data Destruction Comes First</h2>
+        <p>
+          Old electronics are not just waste — they often contain personal files, business records, financial data, client information, or login credentials. TechCykel helps clients reduce that risk before electronics are recycled or removed.
+        </p>
+        <p>
+          We provide mobile data destruction services for homes, offices, and organizations that want sensitive data handled before devices leave their control.
+        </p>
+
+        <ul class="bullets">
+          <li><span class="check">✓</span><span>Mobile data destruction service for hard drives, SSDs, laptops, desktops, and other data-bearing devices.</span></li>
+          <li><span class="check">✓</span><span>Secure document destruction available for paper records, archived files, and confidential materials.</span></li>
+          <li><span class="check">✓</span><span>Qualifying electronics pickup is free; paid services apply to data destruction, document destruction, and special handling.</span></li>
+          <li><span class="check">✓</span><span>Service details, pricing, timing, and documentation needs are confirmed before scheduling.</span></li>
+        </ul>
+
+        <a href="#data-form" class="primary-btn">Request Data Destruction →</a>
+        <div class="notice">TechCykel is security-focused and compliance-minded. We review each request before confirming service so clients know what to expect.</div>
+      </div>
+
+      <div class="process-box">
+        <div class="process-step">
+          <span>1</span>
+          <h4>Tell us what needs to be handled</h4>
+          <p>Submit the service address, item type, estimated quantity, and whether you need mobile data destruction, document destruction, or e-waste pickup.</p>
+        </div>
+        <div class="process-step">
+          <span>2</span>
+          <h4>We confirm the service plan</h4>
+          <p>We review the request, confirm pricing if data or document destruction is needed, and schedule the pickup or on-site service window.</p>
+        </div>
+        <div class="process-step">
+          <span>3</span>
+          <h4>Data is addressed before disposal</h4>
+          <p>Sensitive data and documents are handled first. Electronics are then collected and routed toward reuse, refurbishment, or responsible recycling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="free-pickup">
+    <div class="container">
+      <div class="section-title">
+        <h2>Free Electronics Pickup</h2>
+        <p>TechCykel offers free pickup for qualifying electronics. Paid services apply when clients need mobile data destruction, document destruction, special handling, or larger-scale logistics.</p>
+      </div>
+
+      <div class="accepted-grid">
+        <div class="accepted-card">
+          <h3>Data-Bearing Devices</h3>
+          <ul>
+            <li>Laptops and desktop computers</li>
+            <li>Hard drives, SSDs, and external drives</li>
+            <li>Servers and network storage devices</li>
+            <li>Tablets and smartphones</li>
+          </ul>
+        </div>
+        <div class="accepted-card">
+          <h3>Other Electronics</h3>
+          <ul>
+            <li>Monitors and displays</li>
+            <li>Printers and scanners</li>
+            <li>Routers, modems, keyboards, and mice</li>
+            <li>Cables, peripherals, and small electronics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section trust" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Security-Focused. Recycling-Minded.</h2>
+        <p>TechCykel is built for clients who want more than basic electronics removal. We focus on data security, controlled handling, and responsible downstream processing.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-box"><h4>NYC</h4><p>Mobile service for homes, offices, and organizations.</p></div>
+        <div class="trust-box"><h4>ITAD</h4><p>Retired electronics handled as IT assets, not just junk.</p></div>
+        <div class="trust-box"><h4>Data</h4><p>Mobile data destruction before disposal when needed.</p></div>
+        <div class="trust-box"><h4>DEC</h4><p>Registration process in progress; compliance-minded handling.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="data-form">
+    <div class="container">
+      <div class="section-title">
+        <h2>Data / Document Destruction Request</h2>
+        <p>Use this form if you need mobile data destruction or secure document destruction. Keep the regular pickup request in the welcome section for simple e-waste pickups.</p>
+      </div>
+
+      <div class="single-form-wrap">
+        <div class="form-card">
+          <h3>Request Data Destruction</h3>
+          <p>Submit the essentials and we’ll contact you to confirm service details, pricing, and scheduling.</p>
+
+          <form name="data-destruction-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="data-destruction-request">
+            <p style="display:none;"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+            <div class="form-row">
+              <div class="form-group"><label>Full Name</label><input name="full-name" type="text" placeholder="Full Name" required></div>
+              <div class="form-group"><label>Company / Organization</label><input name="company" type="text" placeholder="Optional"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"><label>Email</label><input name="email" type="email" placeholder="Email Address" required></div>
+              <div class="form-group"><label>Phone</label><input name="phone" type="tel" placeholder="Phone Number" required></div>
+            </div>
+
+            <div class="form-group"><label>Service Address</label><input name="service-address" type="text" placeholder="Street address, city, ZIP" required></div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Service Needed</label>
+                <select name="service-needed" required>
+                  <option value="">Select service</option>
+                  <option>Mobile Data Destruction</option>
+                  <option>Secure Document Destruction</option>
+                  <option>Both Data & Document Destruction</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Material Type</label>
+                <select name="material-type" required>
+                  <option value="">Select material type</option>
+                  <option>Hard Drives / SSDs</option>
+                  <option>Laptops / Desktops</option>
+                  <option>Paper Documents</option>
+                  <option>Mixed Devices / Documents</option>
+                  <option>Not Sure</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"><label>Estimated Quantity</label><input name="estimated-quantity" type="text" placeholder="Example: 5 drives, 2 laptops, 3 boxes" required></div>
+              <div class="form-group">
+                <label>Preferred Timeframe</label>
+                <select name="timeframe">
+                  <option value="">Select timeframe</option>
+                  <option>ASAP</option>
+                  <option>Within 1 week</option>
+                  <option>Flexible</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group"><label>Notes</label><textarea name="notes" placeholder="Add access details, business hours, or anything we should know..."></textarea></div>
+            <button class="submit-btn" type="submit">Submit Data Destruction Request</button>
+            <p class="fine-print">Pricing and scheduling are confirmed after review.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Secure your data before retiring your devices.</h2>
+        <p>Electronics recycling is only one part of the process. TechCykel helps clients handle sensitive data, confidential documents, and retired electronics with a service built for security and responsible disposal.</p>
+        <div class="hero-buttons" style="justify-content:center;margin-bottom:0;">
+          <a href="#data-form" class="primary-btn">Request Data Destruction</a>
+          <a href="#contact" class="secondary-btn">Request Pickup</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom:18px;">Tech<span>Cykel</span></div>
+          <p>Mobile data destruction, secure document destruction, IT asset disposal, free electronics pickup, and responsible e-waste handling serving NYC and surrounding areas.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#data-destruction">Mobile Data Destruction</a>
+          <a href="#data-form">Secure Document Destruction</a>
+          <a href="#free-pickup">ITAD & E-Waste Pickup</a>
+          <a href="#contact">General Pickup Request</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>718-300-6739</p>
+          <p>techcykel@gmail.com</p>
+          <p>Service Area: New York City & surrounding areas</p>
+        </div>
+      </div>
+      <div class="copyright">© 2026 TechCykel. All rights reserved. Service details subject to review and availability.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
