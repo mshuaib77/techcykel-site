@@ -109,6 +109,25 @@
     .submit-btn{width:100%;background:linear-gradient(135deg,var(--blue),var(--green));color:#041018;border:none;padding:16px;border-radius:14px;font-weight:900;cursor:pointer;font-size:1rem;margin-top:6px;}
     .fine-print{font-size:.83rem!important;color:var(--muted-2)!important;margin-top:14px!important;margin-bottom:0!important;}
 
+    .form-success,.form-error{
+      display:none;
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius:14px;
+      font-size:.92rem;
+      font-weight:700;
+    }
+    .form-success{
+      color:#daf7e3;
+      background:rgba(53,208,109,.12);
+      border:1px solid rgba(53,208,109,.28);
+    }
+    .form-error{
+      color:#ffd8d8;
+      background:rgba(255,70,70,.12);
+      border:1px solid rgba(255,70,70,.28);
+    }
+
     /* SERVICES */
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
     .service-card{background:linear-gradient(180deg,var(--panel),#0f1620);border:1px solid rgba(255,255,255,.07);padding:32px;border-radius:24px;transition:.25s;min-height:305px;}
@@ -215,7 +234,7 @@
         <h3>Schedule a Pickup</h3>
         <p>Request e-waste pickup, mobile data destruction, secure document destruction, or IT asset disposal services.</p>
 
-        <form name="general-service-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <form class="netlify-form" name="general-service-request" method="POST" action="/success.html" data-netlify="true" data-netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="general-service-request">
           <p style="display:none;"><label>Don’t fill this out: <input name="bot-field"></label></p>
 
@@ -252,6 +271,8 @@
 
           <button class="submit-btn" type="submit">Submit Request</button>
           <p class="fine-print">Pickup and service details are confirmed after review.</p>
+          <div class="form-success" role="status">Thank you — your request was submitted. TechCykel will contact you shortly.</div>
+          <div class="form-error" role="alert">Something went wrong. Please call 718-300-6739 or email ejoraa.s@techcykel.com.</div>
         </form>
       </div>
     </div>
@@ -388,7 +409,7 @@
           <h3>Request Data Destruction</h3>
           <p>Submit the essentials and we’ll contact you to confirm service details, pricing, and scheduling.</p>
 
-          <form name="data-destruction-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <form class="netlify-form" name="data-destruction-request" method="POST" action="/success.html" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="data-destruction-request">
             <p style="display:none;"><label>Don’t fill this out: <input name="bot-field"></label></p>
 
@@ -443,6 +464,8 @@
             <div class="form-group"><label>Notes</label><textarea name="notes" placeholder="Add access details, business hours, or anything we should know..."></textarea></div>
             <button class="submit-btn" type="submit">Submit Data Destruction Request</button>
             <p class="fine-print">Pricing and scheduling are confirmed after review.</p>
+            <div class="form-success" role="status">Thank you — your data destruction request was submitted. TechCykel will contact you shortly.</div>
+            <div class="form-error" role="alert">Something went wrong. Please call 718-300-6739 or email ejoraa.s@techcykel.com.</div>
           </form>
         </div>
       </div>
@@ -479,13 +502,53 @@
         <div>
           <h4>Contact</h4>
           <p>718-300-6739</p>
-          <p>techcykel@gmail.com</p>
+          <p>ejoraa.s@techcykel.com</p>
+          <p>Business Address: 250 E Sandford Blvd, Mt Vernon, New York</p>
           <p>Service Area: New York City & surrounding areas</p>
         </div>
       </div>
       <div class="copyright">© 2026 TechCykel. All rights reserved. Service details subject to review and availability.</div>
     </div>
   </footer>
+
+  <script>
+    // Netlify Forms AJAX submission.
+    // This keeps the visitor on the page and displays a confirmation message.
+    // If JavaScript is disabled, the form falls back to /success.html.
+    document.querySelectorAll(".netlify-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const submitButton = form.querySelector("button[type='submit']");
+        const successMessage = form.querySelector(".form-success");
+        const errorMessage = form.querySelector(".form-error");
+
+        successMessage.style.display = "none";
+        errorMessage.style.display = "none";
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+
+        try {
+          const formData = new FormData(form);
+          await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+          });
+
+          form.reset();
+          successMessage.style.display = "block";
+          submitButton.textContent = "Submitted";
+        } catch (error) {
+          errorMessage.style.display = "block";
+          submitButton.disabled = false;
+          submitButton.textContent = form.name === "data-destruction-request"
+            ? "Submit Data Destruction Request"
+            : "Submit Request";
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
