@@ -3,9 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechCykel | Mobile Data Destruction & E-Waste Pickup NYC</title>
+  <title>Mobile Data Destruction & E-Waste Pickup NYC | TechCykel</title>
 
-  <meta name="description" content="TechCykel provides mobile data destruction, secure document destruction, IT asset disposal, and free electronics pickup services throughout NYC and surrounding areas." />
+  <meta name="description" content="TechCykel provides mobile data destruction, secure document destruction, IT asset disposal, and free qualifying e-waste pickup for homes and businesses across NYC." />
+
+
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://techcykel.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TechCykel | Mobile Data Destruction & E-Waste Pickup NYC" />
+  <meta property="og:description" content="Mobile data destruction, secure document destruction, IT asset disposal, and free qualifying e-waste pickup for homes and businesses across NYC." />
+  <meta property="og:url" content="https://techcykel.com/" />
+  <meta property="og:site_name" content="TechCykel" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://techcykel.com/#business",
+        "name": "TechCykel",
+        "url": "https://techcykel.com/",
+        "telephone": "+1-718-300-6739",
+        "email": "techcykel@gmail.com",
+        "description": "TechCykel provides mobile data destruction, secure document destruction, IT asset disposal, and free qualifying e-waste pickup services for homes and businesses across New York City and surrounding areas.",
+        "areaServed": [
+          {"@type":"City","name":"New York City"},
+          {"@type":"AdministrativeArea","name":"Bronx"},
+          {"@type":"AdministrativeArea","name":"Manhattan"},
+          {"@type":"AdministrativeArea","name":"Brooklyn"},
+          {"@type":"AdministrativeArea","name":"Queens"},
+          {"@type":"AdministrativeArea","name":"Staten Island"},
+          {"@type":"City","name":"Mount Vernon"}
+        ],
+        "sameAs": [
+          "https://www.facebook.com/techcykel",
+          "https://www.linkedin.com/company/techcykel"
+        ],
+        "makesOffer": [
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mobile Data Destruction"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Secure Document Destruction"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"IT Asset Disposal"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"E-Waste Pickup"}}
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://techcykel.com/#website",
+        "url": "https://techcykel.com/",
+        "name": "TechCykel"
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,25 +161,7 @@
     textarea{min-height:116px;resize:vertical;}
     .submit-btn{width:100%;background:linear-gradient(135deg,var(--blue),var(--green));color:#041018;border:none;padding:16px;border-radius:14px;font-weight:900;cursor:pointer;font-size:1rem;margin-top:6px;}
     .fine-print{font-size:.83rem!important;color:var(--muted-2)!important;margin-top:14px!important;margin-bottom:0!important;}
-
-    .form-success,.form-error{
-      display:none;
-      margin-top:16px;
-      padding:14px 16px;
-      border-radius:14px;
-      font-size:.92rem;
-      font-weight:700;
-    }
-    .form-success{
-      color:#daf7e3;
-      background:rgba(53,208,109,.12);
-      border:1px solid rgba(53,208,109,.28);
-    }
-    .form-error{
-      color:#ffd8d8;
-      background:rgba(255,70,70,.12);
-      border:1px solid rgba(255,70,70,.28);
-    }
+    .hidden-honeypot{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;}
 
     /* SERVICES */
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -234,9 +269,9 @@
         <h3>Schedule a Pickup</h3>
         <p>Request e-waste pickup, mobile data destruction, secure document destruction, or IT asset disposal services.</p>
 
-        <form class="netlify-form" name="general-service-request" method="POST" action="/success.html" data-netlify="true" data-netlify-honeypot="bot-field">
+        <form name="general-service-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="general-service-request">
-          <p style="display:none;"><label>Don’t fill this out: <input name="bot-field"></label></p>
+          <div class="hidden-honeypot" aria-hidden="true"><input name="bot-field" tabindex="-1" autocomplete="off"></div>
 
           <div class="form-group">
             <input name="full-name" type="text" placeholder="Full Name" required>
@@ -271,8 +306,6 @@
 
           <button class="submit-btn" type="submit">Submit Request</button>
           <p class="fine-print">Pickup and service details are confirmed after review.</p>
-          <div class="form-success" role="status">Thank you — your request was submitted. TechCykel will contact you shortly.</div>
-          <div class="form-error" role="alert">Something went wrong. Please call 718-300-6739 or email ejoraa.s@techcykel.com.</div>
         </form>
       </div>
     </div>
@@ -290,21 +323,21 @@
           <div class="service-icon">🔐</div>
           <h3>Mobile Data Destruction</h3>
           <p>On-site destruction options for data-bearing devices including hard drives, SSDs, and storage media. Built for businesses, offices, and individuals who need stronger data protection.</p>
-          <a href="#data-destruction">View details →</a>
+          <a href="mobile-data-destruction-nyc.html">View details →</a>
         </div>
 
         <div class="service-card">
           <div class="service-icon">📄</div>
           <h3>Secure Document Destruction</h3>
           <p>Secure handling for confidential paper records, archived files, and sensitive documents that should not enter normal trash or recycling streams.</p>
-          <a href="#data-form">Request service →</a>
+          <a href="secure-document-destruction-nyc.html">View details →</a>
         </div>
 
         <div class="service-card">
           <div class="service-icon">♻️</div>
           <h3>IT Asset Disposal & Pickup</h3>
           <p>Free pickup of qualifying electronics and retired IT assets. Devices are routed toward reuse, refurbishment, or responsible recycling after data concerns are addressed.</p>
-          <a href="#contact">Request pickup →</a>
+          <a href="e-waste-pickup-nyc.html">View pickup details →</a>
         </div>
       </div>
     </div>
@@ -409,9 +442,9 @@
           <h3>Request Data Destruction</h3>
           <p>Submit the essentials and we’ll contact you to confirm service details, pricing, and scheduling.</p>
 
-          <form class="netlify-form" name="data-destruction-request" method="POST" action="/success.html" data-netlify="true" data-netlify-honeypot="bot-field">
+          <form name="data-destruction-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="data-destruction-request">
-            <p style="display:none;"><label>Don’t fill this out: <input name="bot-field"></label></p>
+            <div class="hidden-honeypot" aria-hidden="true"><input name="bot-field" tabindex="-1" autocomplete="off"></div>
 
             <div class="form-row">
               <div class="form-group"><label>Full Name</label><input name="full-name" type="text" placeholder="Full Name" required></div>
@@ -464,9 +497,37 @@
             <div class="form-group"><label>Notes</label><textarea name="notes" placeholder="Add access details, business hours, or anything we should know..."></textarea></div>
             <button class="submit-btn" type="submit">Submit Data Destruction Request</button>
             <p class="fine-print">Pricing and scheduling are confirmed after review.</p>
-            <div class="form-success" role="status">Thank you — your data destruction request was submitted. TechCykel will contact you shortly.</div>
-            <div class="form-error" role="alert">Something went wrong. Please call 718-300-6739 or email ejoraa.s@techcykel.com.</div>
           </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="service-areas">
+    <div class="container">
+      <div class="section-title">
+        <h2>Serving NYC Homes, Offices & Organizations</h2>
+        <p>TechCykel provides mobile data destruction, secure document destruction, IT asset disposal, and e-waste pickup for clients across the Bronx, Manhattan, Brooklyn, Queens, Staten Island, Mount Vernon, and surrounding areas.</p>
+      </div>
+      <div class="accepted-grid">
+        <div class="accepted-card">
+          <h3>Common Pickup Requests</h3>
+          <ul>
+            <li>Office electronics cleanouts and IT refreshes</li>
+            <li>Old laptops, desktops, monitors, drives, and printers</li>
+            <li>Data-bearing devices that need destruction before disposal</li>
+            <li>Secure pickup for homes, small businesses, and property managers</li>
+          </ul>
+        </div>
+        <div class="accepted-card">
+          <h3>Search Terms We Serve</h3>
+          <ul>
+            <li>E-waste pickup NYC</li>
+            <li>Mobile data destruction NYC</li>
+            <li>Hard drive destruction Bronx</li>
+            <li>IT asset disposal New York City</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -494,61 +555,21 @@
         </div>
         <div>
           <h4>Services</h4>
-          <a href="#data-destruction">Mobile Data Destruction</a>
-          <a href="#data-form">Secure Document Destruction</a>
-          <a href="#free-pickup">ITAD & E-Waste Pickup</a>
+          <a href="mobile-data-destruction-nyc.html">Mobile Data Destruction</a>
+          <a href="secure-document-destruction-nyc.html">Secure Document Destruction</a>
+          <a href="it-asset-disposal-nyc.html">ITAD & E-Waste Pickup</a>
           <a href="#contact">General Pickup Request</a>
         </div>
         <div>
           <h4>Contact</h4>
           <p>718-300-6739</p>
-          <p>ejoraa.s@techcykel.com</p>
-          <p>Business Address: 250 E Sandford Blvd, Mt Vernon, New York</p>
+          <p>techcykel@gmail.com</p>
           <p>Service Area: New York City & surrounding areas</p>
         </div>
       </div>
       <div class="copyright">© 2026 TechCykel. All rights reserved. Service details subject to review and availability.</div>
     </div>
   </footer>
-
-  <script>
-    // Netlify Forms AJAX submission.
-    // This keeps the visitor on the page and displays a confirmation message.
-    // If JavaScript is disabled, the form falls back to /success.html.
-    document.querySelectorAll(".netlify-form").forEach((form) => {
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const submitButton = form.querySelector("button[type='submit']");
-        const successMessage = form.querySelector(".form-success");
-        const errorMessage = form.querySelector(".form-error");
-
-        successMessage.style.display = "none";
-        errorMessage.style.display = "none";
-        submitButton.disabled = true;
-        submitButton.textContent = "Submitting...";
-
-        try {
-          const formData = new FormData(form);
-          await fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-          });
-
-          form.reset();
-          successMessage.style.display = "block";
-          submitButton.textContent = "Submitted";
-        } catch (error) {
-          errorMessage.style.display = "block";
-          submitButton.disabled = false;
-          submitButton.textContent = form.name === "data-destruction-request"
-            ? "Submit Data Destruction Request"
-            : "Submit Request";
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
